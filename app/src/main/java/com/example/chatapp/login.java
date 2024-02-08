@@ -2,10 +2,13 @@ package com.example.chatapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,7 +67,11 @@ public class login extends AppCompatActivity {
                     Toast.makeText(login.this, "Enter The Password", Toast.LENGTH_SHORT).show();
                 }else if (!Email.matches(emailPattern)){
                     progressDialog.dismiss();
-                    email.setError("Email Not In Correct Format");
+                    email.setError("Give Proper Email Address");
+                }else if (password.length()<6){
+                    progressDialog.dismiss();
+                    password.setError("More Then Six Characters");
+                    Toast.makeText(login.this, "Password Needs To Be Longer Then Six Characters", Toast.LENGTH_SHORT).show();
                 }else {
                     auth.signInWithEmailAndPassword(Email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
