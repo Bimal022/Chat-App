@@ -1,6 +1,5 @@
-
-
 package com.example.chatapp;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
